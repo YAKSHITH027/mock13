@@ -2,7 +2,9 @@ const express = require('express')
 const cors = require('cors')
 
 const { userRoute } = require('./routes/user.routes')
+const { quizRoute } = require('./routes/quiz.routes')
 const { connection } = require('./db')
+const { leadRoute } = require('./routes/lead.routes')
 
 require('dotenv').config()
 
@@ -16,6 +18,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/user', userRoute)
+app.use('/quiz', quizRoute)
+app.use('/lead', leadRoute)
 
 app.listen(process.env.port, async () => {
   try {
